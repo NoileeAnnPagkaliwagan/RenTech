@@ -5,10 +5,12 @@ import Catalog from "./components/Catalog";
 import ProductCard from "./components/ProductCard";
 import SearchAndFilter from "./components/SearchAndFilter";
 import BookingForm from "./components/BookingForm";
+import Signup from "./components/SignUp";
+import Login from "./components/Login";
+import StaffManagement from "./components/StaffManagement";
 import AIBusinessInsights from "./components/AIBusinessInsights";
 import SmartInventoryOptimization from "./components/SmartInventoryOptimization";
 import CustomerChat from "./components/CustomerChat";
-import StaffManagement from "./components/StaffManagement";
 
 function App() {
   const [searchTerm, setSearchTerm] = useState("");
@@ -60,6 +62,9 @@ function App() {
     return matchesSearch && matchesStatus;
   });
 
+  const [extraUsers, setExtraUsers] = useState({});
+
+  // Mock data for AI components
   const mockInsights = [
     "Rental demand for winter coats is up 20% this week.",
     "Expect a surge in formal wear rentals next month due to prom season.",
@@ -117,8 +122,8 @@ function App() {
           <Catalog />
         </section>
 
-        {/* Collection */}
-        <section className="mt-12 bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+        {/* Collection with Product Cards */}
+        <section className="mb-10 bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
           <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-4 mb-8">
             <div>
               <h2 className="text-2xl font-bold text-slate-900">
@@ -152,15 +157,19 @@ function App() {
 
         {/* Booking Form */}
         {isBookingOpen && (
-          <BookingForm onClose={() => setIsBookingOpen(false)} />
+          <section className="mb-10">
+            <h2 className="text-xl font-semibold text-gray-600 mb-4 border-b pb-2">
+              4. Booking Form Component
+            </h2>
+            <BookingForm onClose={() => setIsBookingOpen(false)} />
+          </section>
         )}
 
         {/* Product Card */}
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-gray-600 mb-4 border-b pb-2">
-            4. Product Card Component
+            5. Product Card Component
           </h2>
-
           <ProductCard
             product={{
               name: "Pink Gown",
@@ -176,9 +185,8 @@ function App() {
         {/* Search & Filter */}
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-gray-600 mb-4 border-b pb-2">
-            5. Search & Filter Component
+            6. Search & Filter Component
           </h2>
-
           <SearchAndFilter
             searchTerm={searchTerm}
             onSearchChange={setSearchTerm}
@@ -187,33 +195,55 @@ function App() {
           />
         </section>
 
-        {/* AI Insights */}
+        {/* Login */}
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-gray-600 mb-4 border-b pb-2">
-            6. Generative AI Business Insights
+            7. Login Component
           </h2>
+          <Login
+            onLogin={(role) => console.log(`Logged in as ${role}`)}
+            onBack={() => console.log("Back pressed")}
+          />
+        </section>
 
+        {/* Sign Up */}
+        <section className="mb-10">
+          <h2 className="text-xl font-semibold text-gray-600 mb-4 border-b pb-2">
+            8. Sign Up Component
+          </h2>
+          <Signup
+            onLogin={(role) => console.log(`Logged in as ${role}`)}
+            onBack={() => console.log("Back pressed")}
+            onNavigateToLogin={() => console.log("Navigate to login")}
+            extraUsers={extraUsers}
+            setExtraUsers={setExtraUsers}
+          />
+        </section>
+
+        {/* AI Business Insights */}
+        <section className="mb-10">
+          <h2 className="text-xl font-semibold text-gray-600 mb-4 border-b pb-2">
+            9. Generative AI Business Insights
+          </h2>
           <AIBusinessInsights
             insights={mockInsights}
             suggestions={mockSuggestions}
           />
         </section>
 
-        {/* Inventory */}
+        {/* Smart Inventory Optimization */}
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-gray-600 mb-4 border-b pb-2">
-            7. Smart Inventory & Sales Optimization
+            10. Smart Inventory & Sales Optimization
           </h2>
-
           <SmartInventoryOptimization metrics={mockMetrics} />
         </section>
 
-        {/* Chat */}
+        {/* Customer Chat */}
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-gray-600 mb-4 border-b pb-2">
-            8. Customer Support Assistant
+            11. Customer Support Assistant
           </h2>
-
           <CustomerChat
             products={[
               {
@@ -250,12 +280,11 @@ function App() {
           />
         </section>
 
-        {/* Staff */}
+        {/* Staff Management */}
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-gray-600 mb-4 border-b pb-2">
-            9. Staff Management
+            12. Staff Management Component
           </h2>
-
           <StaffManagement />
         </section>
       </div>
