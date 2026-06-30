@@ -184,8 +184,6 @@ export default function BookingForm({ onClose }) {
               </div>
             </div>
           )}
-
-          {/}
           {step === 2 && (
             <div>
               <h3 style={styles.sectionTitle}>Payment Method</h3>
@@ -219,7 +217,6 @@ export default function BookingForm({ onClose }) {
             </div>
           )}
 
-          }
           {step === 3 && (
             <div style={{textAlign: 'center'}}>
               <h3 style={{...styles.sectionTitle, fontSize: '22px', margin: '10px 0'}}>Booking Confirmed!</h3>
